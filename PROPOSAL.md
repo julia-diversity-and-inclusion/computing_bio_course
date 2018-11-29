@@ -1,4 +1,4 @@
-Julia CFP:
+Julia CFP: https://juliacomputing.com/blog/2018/10/31/DandIgrants.html  
 Proposal: submitted to julia computing 2018-11-25
 
 # Increasing Representation of Women in Computational Biology
@@ -104,11 +104,11 @@ of their own skills and interest in pursuing computational biology.
 
 ## (4) What funds/resources does your project require and why? If you were granted 50% of the funds you’ve requested, would you be able to use those funds to do impactful work?
 
-                          | Cost  | Count     | Subtotal | Notes
---------------------------|-------|-----------|----------|---------------
-Teaching assistant salary | $1680 | 2         | $3360    | Semester Total
-Additional student hours  | $12   | 30        | $360     | cost per hour
-                          |       | **Total** | $3720    |  
+|                           | Cost  | Count     | Subtotal | Notes          |
+|---------------------------|-------|-----------|----------|----------------|
+| Teaching assistant salary | $1680 | 2         | $3360    | Semester Total |
+| Additional student hours  | $12   | 30        | $360     | cost per hour  |
+|                           |       | **Total** | $3720    |                |
 
 I am requesting $3720
 to pay the salaries of two student teaching assistants during the course run,
@@ -131,3 +131,7 @@ but may not be able to address all of the proposed activities.
 Yes, I would be happy to report halfway through the grant period and at the end.
 I also plan to solicit feedback on discourse about course materials,
 and make all course material and research findings available on github.
+
+[1]: https://doi.org/10.1371/journal.pcbi.1005134
+[2]: https://opensourcesurvey.org/2017/
+[3]: http://dx.doi.org/10.7717/peerj-cs.111
