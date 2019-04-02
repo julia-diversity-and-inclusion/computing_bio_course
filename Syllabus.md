@@ -10,7 +10,8 @@
 
 ### Course Run Info
 
-TODO: add class schedule etc
+TBD
+<!-- TODO: add class schedule etc -->
 
 ## Description
 
@@ -43,3 +44,47 @@ but examples will be rooted in molecular and evolutionary biology problems.
 Students without prior coursework in biology should be able to succeed with additional effort.
 
 Recommended: Molecular and/or Cell Biology.
+
+### Course Materials
+
+Online textbook (free)
+
+[Think Julia: How to think like a computer scientist](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html)
+
+[Lessons and code repositories](#) <!-- TODO: Add link -->
+
+## Course Schedule
+
+### Week 1
+
+#### Lesson 1: Getting Started
+
+[Lesson repository](#)
+
+##### Learning Objectives
+
+**Concepts** - After completing this lesson, students will be able to:
+
+- Compare and contrast computer code meaning and syntax
+- Identify common "algorithms" used in their daily lives
+
+**Skills** - After completing this lesson, students will be able to:
+
+- Navigate their computer's file system using a command line interface
+- Use a plain text editor (Atom) to modify source code
+- Install command line software using `homebrew`
+- Clone, commit to, and push from a git repository
+
+#### Lesson 2: "Hello, World!" Writing your first program
+
+[Lesson repository](#)
+
+##### Learning Objectives
+
+**Concepts** - After completing this lesson, students will be able to:
+
+-
+
+**Skills** - After completing this lesson, students will be able to:
+
+-
