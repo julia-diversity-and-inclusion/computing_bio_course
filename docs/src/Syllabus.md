@@ -1,4 +1,4 @@
-# BISC 195 - Introduction to Programming for Biologists: Computational tools for modern biology
+# BISC 195 - Essential Skills for Computational Biology
 
 ## Course Info
 
@@ -33,7 +33,7 @@ After completing this course, students will be able to:
 
 - Navigate their computer and manipulate files using a command line interface.
 - Write a script to perform statistical analyses on and plot a large numerical dataset.
-- Find, download, and process large biological sequence datasets from an online source
+- Find, download, and process large biological sequence datasets from an online source.s
 - Search for a solution to a novel error or software bug and implement it in code.
 - Use a version control system to keep track of changes to their code.
 
@@ -75,7 +75,30 @@ Online textbook (free)
 - Install command line software using `homebrew`
 - Clone, commit to, and push from a git repository
 
-#### Lesson 2: "Hello, World!" Writing your first program
+#### Lesson 2: Types of data, operations on data
+
+[Lesson repository](#)
+
+##### Learning Objectives
+
+**Concepts** - After completing this lesson, students will be able to:
+
+- Distinguish between variables and function arguments
+- Identify functions that operate on or modify data
+- Compare and contrast common scalar and container data types
+- Recognize errors resulting from using functions on datatypes
+  that do not have appropriate methods
+
+**Skills** - After completing this lesson, students will be able to:
+
+- Execute functions on different types of arguments
+  in a Jupyter notebook and in the REPL
+- Use print statements and type introspection methods to
+  investigate a data type
+- Assign, modify and copy variables
+
+
+#### Lesson 3: "Hello, World!" Writing your first program
 
 [Lesson repository](#)
 
