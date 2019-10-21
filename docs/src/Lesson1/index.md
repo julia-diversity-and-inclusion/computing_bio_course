@@ -1,4 +1,4 @@
-# Lesson 1 - Getting started
+# Getting started
 
 This file contains instructions for completing today's lesson.
 It is written in a language called "markdown",

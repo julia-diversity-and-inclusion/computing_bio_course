@@ -9,6 +9,7 @@ makedocs(
             "Lesson1/index.md",
             "Windows Users" => "Lesson1/0_windows.md",
             "Using the Terminal" => "Lesson1/1_terminal.md"
+            ]
     ],
     authors = "Kevin Bonham, PhD",
     format = Documenter.HTML(

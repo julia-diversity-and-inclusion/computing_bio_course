@@ -1,6 +1,9 @@
-# BISC 195 - Essential Skills for Computational Biology
+# Syllabus
 
 ## Course Info
+
+Course Code: BISC 195  
+Course Title: Essential Skills for Computational Biology
 
 ### Instructor
 **Instructor:** Kevin Bonham, PhD
