@@ -11,13 +11,13 @@ expect the later, a so-called "Unix" environment.
 The good news is that Windows 10 has a way
 to run a Unix environment side-by-side with Windows.
 
-!!! Windows
-   Throughout this course,
-   you will see boxes like this labeled "Windows."
-   These contain information about ways in which
-   Windows is different from Unix operating systems.
-   Pay careful attention to these boxes,
-   since other instructions may be unclear if you don't modify them accordingly.
+!!! windows
+    Throughout this course,
+    you will see boxes like this labeled "Windows."
+    These contain information about ways in which
+    Windows is different from Unix operating systems.
+    Pay careful attention to these boxes,
+    since other instructions may be unclear if you don't modify them accordingly.
 
 Much of this guide was cribbed from [Michael Treat's guide](https://github.com/michaeltreat/Windows-Subsystem-For-Linux-Setup-Guide),
 which has a lot more information and [a video](https://youtu.be/GYuv37yPmGM?t=207)
@@ -50,18 +50,19 @@ This guide might not open after restart, so be sure to make note of the url or s
    Also note that it will protect your password by not displaying it to the screen when you type,
    but it is registering your key strokes.
 
-    Note: *Security is important at all levels,
-    so even though you have to use this password often,
-    don't be tempted to make it too simple.
-    Essentially all of your Window's files can be viewed and modified by this user,
-    so keep that password safe and strong.*
+    !!! note
+        Security is important at all levels,
+        so even though you have to use this password often,
+        don't be tempted to make it too simple.
+        Essentially all of your Window's files can be viewed and modified by this user,
+        so keep that password safe and strong.
 
-    *Also be careful __not to mess with any permissions__!
-    If you think you need to do that to complete this setup,
-    then stop and reach out to me.
-    You should NOT have to worry about any permissions with this,
-    and if you do get stuck there then I need to know so I can help troubleshoot you through this,
-    or so we know we need to update this guide*.
+        Also be careful __not to mess with any permissions__!
+        If you think you need to do that to complete this setup,
+        then stop and reach out to me.
+        You should NOT have to worry about any permissions with this,
+        and if you do get stuck there then I need to know so I can help troubleshoot you through this,
+        or so we know we need to update this guide*.
 
 1. Finally, the prompt will change and you will be on a command line.
    Type `pwd` and press enter to see where you currently are in the FS.
