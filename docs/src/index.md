@@ -1,6 +1,6 @@
-# Essential Skills for Computational Biology - Course Docs
+# Essential Skills for Computational Biology
 
 ```@contents
-Pages = ["Syllabus.md", "Lesson01.md"]
-Depth = 3
+Pages = ["index.md", "Syllabus.md", "Lesson1/index.md"]
+Depth = 2
 ```
