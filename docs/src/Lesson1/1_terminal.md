@@ -40,7 +40,7 @@ you'll see that it is a powerful way to get a lot done quickly.
 1. Open Applications
 2. Click Open the `Terminal` application
 
-**Windows Users**:
+**Windows Users**:  
 1. Click Start -> Programs
 2. Open Windows Subsystem for Linux
 

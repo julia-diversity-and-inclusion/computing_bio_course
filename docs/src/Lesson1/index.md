@@ -18,4 +18,7 @@ To complete this lesson, follow the instructions below.
     Skipping steps or doing things out of order
     can lead to unexpected results.
 
-{{%toc}}
+```@contents
+Pages = ["Lesson1/index.md", "Lesson1/0_windows.md","Lesson1/1_terminal.md"]
+Depth = 3
+```
