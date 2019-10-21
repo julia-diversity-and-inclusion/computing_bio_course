@@ -93,7 +93,7 @@ On a Mac (and other Unix systems),
 the root is referred to with a single forward slash (`/`),
 While on Windows machines, the root is probably `C:\`.
 
-!!! Windows
+!!! note "Windows Users"
     When you open Windows Subsystem for Linux, you're actually running
     a fully functional OS with its own file system.
     As a result, when you type `pwd` in the terminal,
