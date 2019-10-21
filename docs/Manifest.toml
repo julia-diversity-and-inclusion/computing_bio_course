@@ -41,6 +41,12 @@ git-tree-sha1 = "d45c163c7a3ae293c15361acc52882c0f853f97c"
 uuid = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 version = "0.23.4"
 
+[[DocumenterTools]]
+deps = ["Base64", "DocStringExtensions", "LibGit2"]
+git-tree-sha1 = "58db9d1c626de92318ee35cbaf466739f4b5a09a"
+uuid = "35a29f4d-8980-5a13-9543-d66fff28ecb8"
+version = "0.1.2"
+
 [[HTTP]]
 deps = ["Base64", "Dates", "IniFile", "MbedTLS", "Sockets"]
 git-tree-sha1 = "f1e1b417a34cf73a70cbed919915bf8f8bad1806"
