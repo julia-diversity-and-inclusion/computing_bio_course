@@ -1,7 +1,7 @@
 # Part 1 - Navigating the filesystem using the terminal
 
 You are probably already familiar with
-your computer's **filesystem**[^fs].
+your computer's **[^file system]**.
 If you've ever looked at files on your `Desktop`,
 or opened `Finder`/`Explorer` and navigated to your `Documents` folder,
 you've been using the file system.
@@ -20,14 +20,14 @@ I will use the terms interchangably.
 
 You may not have thought much about how the filesystem is organized,
 but you probably have an intuitive sense of how this works.
-Your **home**[^home] directory contains the `Desktop` and `Documents` folders,
+Your **[^home]** directory contains the `Desktop` and `Documents` folders,
 each of which might contain many other subfolders and/or files,
 and each subfolder may have yet more subfolders and files and so on.
 
 `Finder`/`Explorer` are examples of a graphical user interface (GUI - pronounced "gooey"),
 that is a program that allows you to interact with it visually.
 However, GUIs are difficult to design and maintain,
-so most bioinformatics tools are built around **command line**[^cl]
+so most bioinformatics tools are built around **[^command line]**
 or text-based interfaces.
 The good news is that the organization of the filesystem
 is the same whether you're interacting with it in a GUI or in the terminal.
@@ -57,7 +57,7 @@ may or may not contain objects (files),
 and may have one or many roads leading to new locations (subdirectories).
 
 Your present location,
-referred to as the **working directory**[^wd],
+referred to as the **working directory**[^working directory],
 is your home folder when you first open the terminal.
 Let's see where that is.
 In your terminal, type `pwd` and press enter.
@@ -87,7 +87,7 @@ This is the "print working directory" command.
     you will see a new prompt.
 
 The filesystem is organized hierarchically -
-At the very top of the hierarchy is the **root**[^root],
+At the very top of the hierarchy is the **[^root]**,
 which you can think of as a folder that contains all other files and folders.
 On a Mac (and other Unix systems),
 the root is referred to with a single forward slash (`/`),
@@ -106,12 +106,21 @@ While on Windows machines, the root is probably `C:\`.
 
 ### Moving around
 
+- `cd`
+- `ls`
+  - `ls -al`
+- relative vs absolute paths
 
+### Manipulating files
+
+- `mkdir`, `rmdir`
+- `cp`, `mv`, `rm`
+- globs
 
 ## Key Terms
 
-[^fs]: **Filesystem**: a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
-[^root]: **root**: the top of the filesystem hierarchy. A folder that contains all other files and folders.
-[^home]: **home**: a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
-[^cl]: **command line**: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
-[^wd]: **working directory**:
+[^file system]: a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
+[^root]: the top of the filesystem hierarchy. A folder that contains all other files and folders.
+[^home]: a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
+[^command line]: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
+[^working directory]: the current beginning of relative paths. Equivalent to `.` or `./`
