@@ -374,21 +374,22 @@ In any case, this entire course will use git and github.com (a website for
 managing and collaborating on git repositories).
 So let's work on doing that.
 
-### Assignment 1
+### Cloning a repository
 
-1. If you haven't already, sign up for a github account at https://github.com/join
+If you haven't already, sign up for a github account at https://github.com/join
 
 !!! warning "Privacy Note"
     You do not need to use your `wellesley.edu` email address to create this account,
     but let Kevin know if you use a different address
     so that you get credit for your work.
 
-2. If you'd like, you may sign up for a [github student discount pack](https://education.github.com/pack). This is not necessary for this course.
-3. Accept assignment 1 at [this link](https://classroom.github.com/a/M0Xe9uT2)
+If you'd like, you may sign up for a [github student discount pack](https://education.github.com/pack). This is not necessary for this course.
+
+Next, accept `Assignment1` at [this link](https://classroom.github.com/a/M0Xe9uT2)
 
 When you accept the assignment,
 a git repository is created in your github account.
-Click the link
+Click the link shown on the webpage
 
 ![accept assignment](https://user-images.githubusercontent.com/3502975/67243455-8ee74800-f425-11e9-867e-c81368c82cad.png)
 
@@ -404,9 +405,101 @@ to your computer.
 
 Find the repository url on the github page:
 
+![clone repo](https://user-images.githubusercontent.com/3502975/67320638-7c7c1580-f4dc-11e9-8e6e-f5228bc96e86.png)
 
+Copy the url listed, and then in your terminal,
+
+```sh
+$ git clone <paste-url>
+```
+```
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (14/14), done.
+remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (18/18), done.
+```
+
+You should now have a new directory called `lesson-1-<your_username>/`.
+Change your working directory, and do `git status`
+
+```sh
+$ git status
+```
+```
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+```
+
+You now have a local copy of the [][^remote] repository.
+By default, the name of this remote is `origin`.
+
+In principal, it is possble to have many remotes
+and many local copies,
+but in practice, you'll usually only have one of each.
+See the url of `origin`:
+
+```sh
+$ git remote get-url origin
+```
+```
+https://github.com/wellesley-bisc195/lesson-1-<your_username>
+```
+
+There are many other useful options for `git remote`.
+Take a look by executing `git remote --help`.
+
+### Assignment1
+
+The `src` directory in the `Lesson1` repo
+contains a code file called `assignment.jl`.
+
+Follow the instructions in the comments
+(remember, comment lines in `julia` files start with `#`),
+then use `git add` and `git commit`
+to commit these changes to the repository.
+You do not have to wait until you're finished to commit changes -
+There are many different philosophies about what amount of work
+should be included in a commit,
+but my philosophy is "commit early, commit often."
+
+!!! tip
+    For files that are already being tracked,
+    you can skip the two-step `add` and `commit`.
+    Instead, you can do `git commit -a -m "commit message"` -
+    the `-a` (or `--all`) flag automatically adds all previously tracked files.
+
+Once you've made and committed the requested changes,
+it's time to [][^push] those commits back to the remote.
+When you cloned this repo,
+git automatically set the remote tracking branch,
+so you can just do
+
+```sh
+$ git push
+```
+```
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 409 bytes | 409.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/wellesley-bisc195/lesson-2-bisc195tester
+   be920ca..0da312f  master -> master
+```
+
+Good work!
 
 # Key Terms
 
 [^staged]: Files with changes that are ready to be committed.
 [^commit]: A unique reference to a specific state of a repository.
+[^remote]: A clone of a repository that exists on a server,
+    rather than your local machine.
+    You can see what remotes are linked to your local repo
+    with `git remote`.
+[^push]: Move commits from a local repo to the remote.
