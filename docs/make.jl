@@ -9,7 +9,7 @@ makedocs(
             "Lesson1/index.md",
             "Windows Users" => "Lesson1/0_windows.md",
             "Using the Terminal" => "Lesson1/1_terminal.md",
-            "Using the Terminal" => "Lesson1/2_git.md"
+            "Git for Version Control" => "Lesson1/2_git.md"
             ]
     ],
     authors = "Kevin Bonham, PhD",
