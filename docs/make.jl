@@ -8,7 +8,8 @@ makedocs(
         "Lesson 1 - Getting Started" => [
             "Lesson1/index.md",
             "Windows Users" => "Lesson1/0_windows.md",
-            "Using the Terminal" => "Lesson1/1_terminal.md"
+            "Using the Terminal" => "Lesson1/1_terminal.md",
+            "Using the Terminal" => "Lesson1/2_git.md"
             ]
     ],
     authors = "Kevin Bonham, PhD",
@@ -18,7 +19,6 @@ makedocs(
 
 deploydocs(
     repo = "github.com/wellesley-bisc195/computing_bio_course.git",
-    osname = "linux",
     target = "build",
     deps = nothing,
     make = nothing

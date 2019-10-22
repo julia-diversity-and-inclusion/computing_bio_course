@@ -69,6 +69,8 @@ $ pwd
 /Users/kevin
 ```
 
+This is the "print working directory" command.
+
 !!! tip
     Whenever you see code blocks in these lessons that start with `$ `,
     this is a hint that it is a shell command.
@@ -84,21 +86,27 @@ $ pwd
     and once the command has finished executing,
     you will see a new prompt.
 
-This is the "print working directory" command.
-
-
-
-
-
-
-
-
 The filesystem is organized hierarchically -
 At the very top of the hierarchy is the **root**[^root],
 which you can think of as a folder that contains all other files and folders.
 On a Mac (and other Unix systems),
 the root is referred to with a single forward slash (`/`),
 While on Windows machines, the root is probably `C:\`.
+
+!!! note "Windows Users"
+    When you open Windows Subsystem for Linux, you're actually running
+    a fully functional OS with its own file system.
+    As a result, when you type `pwd` in the terminal,
+    you will likely see something like `/home/yourname`,
+    rather than seeing your main OS home folder.
+
+    But WSL has access to your files in a special path, `/mnt/c/`.
+    If you want to see the files in your `Documents` folder for example,
+    look in `/mnt/c/Users/yourname/Documents`.
+
+### Moving around
+
+
 
 ## Key Terms
 
