@@ -43,6 +43,9 @@ so your pronouns are out of step.
 In writing, a mistake like this might just look silly,
 but in programming, it can mean your code doesn't run
 or generates the wrong answer.
+Even more critically,
+code often involves many files working together,
+and keeping track of the versions of multiple files at the same time is necessary.
 
 ## `git` is a program for "distributed version control"
 
@@ -253,7 +256,111 @@ Changes to be committed:
 ```
 
 The file is now "[][^staged]" -
-that is ready to be "committed.
+that is ready to be "committed."
+In git, a "[][^commit]" is used to register a specific version of a repository.
+The current state of all of the tracked files in the repository
+will be recorded.
+
+We don't really need to track an empty file,
+let's add some text to it.
+In Atom, add the following line to `fox.txt` **and save**.
+
+```
+The quick fox jumped.
+```
+
+Now, back in the terminal, what's the status?
+
+```sh
+$ git status
+```
+```
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   fox.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   fox.txt
+```
+
+Notice that `fox.txt` now appears under both
+"Changes to be committed" and
+"Changes not staged for commit".
+
+Why?
+Because you initially staged an empty file,
+and now there's a modified version of the file that has not been staged.
+You can see the difference between the current state of the file
+and what's staged using `git diff`
+
+```sh
+$ git diff fox.txt | cat
+```
+```
+diff --git a/fox.txt b/fox.txt
+index e69de29..395235f 100644
+--- a/fox.txt
++++ b/fox.txt
+@@ -0,0 +1 @@
++The quick fox jumped.
+```
+
+The syntax of this output is perhaps a bit confusing,
+but it's saying that a line was added to `fox.txt`.
+
+Let's go ahead and stage this change,
+and then make our first commit.
+
+```sh
+$ git add fox.txt
+$ git commit -m "my first commit"
+```
+```
+[master (root-commit) b183d56] my first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 fox.txt
+```
+
+```sh
+$ git status
+```
+```
+On branch master
+nothing to commit, working tree clean
+```
+
+Congratulations! You have a git repository.
+
+### Practice: Just keep committing
+
+Try making some more changes to this file,
+make some new files,
+and use `git add`,
+`git commit`, and
+`git status`
+to keep track of those changes.
+
+!!! warning
+    If you enter `git commit` without including a commit message
+    with the `-m` flag,
+    your terminal may transform into a text editor.
+    If this happens,
+    you may find it difficult to return to the command prompt.
+    Try typing `:q!` (don't copy/paste) then `enter`.
+
+    If this doesn't work, ask for assistance.
+    If Kevin or the TAs are unavailable,
+    you can always close and re-open your terminal.
+
+    In either case, your commit will be aborted.
 
 ## Using git in this course
 
@@ -285,9 +392,21 @@ Click the link
 
 ![accept assignment](https://user-images.githubusercontent.com/3502975/67243455-8ee74800-f425-11e9-867e-c81368c82cad.png)
 
-The first st
+This repository contains a lot more stuff than the repository you made above,
+but it's simply a directory with subdirectories and files
+(plus git superpowers of course).
+You can click on the directories and files
+to see their contents.
+
+Of course, this repository is stored on github, not your computer.
+We can fix that by [][^clone]ing this repository
+to your computer.
+
+Find the repository url on the github page:
+
 
 
 # Key Terms
 
 [^staged]: Files with changes that are ready to be committed.
+[^commit]: A unique reference to a specific state of a repository.
