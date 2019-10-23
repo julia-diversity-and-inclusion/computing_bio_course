@@ -80,7 +80,8 @@ we need to get `git` installed.
 
 If you are using Windows Subsystem for linux,
 or a linux operation system, `git` should already be installed.
-you can check this by executing `git --help` in the terminal.
+
+**Step 1:** check if `git` is installed by executing `git --help` in the terminal.
 
 ```sh
 $ git --help
@@ -112,7 +113,8 @@ So you need to install it
 
 The easiest way to install git on a mac is using [`homebrew`](http://brew.sh).
 
-Copy and paste the following command into your terminal (excluding the `$`),
+**Step 1b**: If you're using a mac and don't have git instealled,
+copy and paste the following command into your terminal (excluding the `$`),
 then press `enter` to execute.
 
 ```
@@ -142,7 +144,7 @@ just type the password and hit `enter`.
 The next step is to tell git your name and email address,
 so that you are credited with the changes you make to repositories.
 
-Enter the following commands,
+**Step 2:** Enter the following commands,
 changing the name and e-mail address to yours.
 
 ```sh
@@ -152,7 +154,7 @@ $ git config --global user.email kbonham@wellesley.edu
 
 ### Practice: Create your first git repository
 
-First, in your terminal,
+**Step 3:** In your terminal,
 change your working directory to your `Documents` folder (`~/Documents`)
 
 !!! note "Windows Users"
@@ -160,7 +162,7 @@ change your working directory to your `Documents` folder (`~/Documents`)
     the `Documents/` folder of your linux filesystem found at `~/Documents`,
     or of your Windows filesystem, which is found at `/mnt/c/Users/<your_username>/Documents`
 
-Next, create a new directory called `my_repo`.
+**Step 4:** Next, create a new directory called `my_repo`.
 
 !!! tip "Reminders"
     - `cd` is the command for changing working directory
@@ -171,7 +173,7 @@ Next, create a new directory called `my_repo`.
     The stuff you do regularly will become second nature,
     and the other stuff is always a Google search away.
 
-Now, change your working directory into the newly created `my_repo/`
+**Step 5:** Now, change your working directory into the newly created `my_repo/`
 and initialize a git repository using the command `git init`
 
 ```sh
@@ -188,12 +190,12 @@ Initialized empty Git repository in /home/kevin/Documents/my_repo/.git/
     can you see the `.git/` directory that was created?
     Why or why not?
 
-Open the folder in your operating system's file system navigator
+**Step 6:** Open the folder in your operating system's file system navigator
 (Finder on a Mac, Explorer in Windows).
 
 !!! note "Windows Users"
     If you created the repository in the linux filesystem,
-    the easiest way to do this is to execute `explorer.exe .`
+    the easiest way to do this is to execute `explorer.exe ./`
     from the command line.
     [See here](https://devblogs.microsoft.com/commandline/whats-new-for-wsl-in-windows-10-version-1903/)
     for more information about how the Windows and Linux filesystems interact.
@@ -204,10 +206,11 @@ that will include all of the version information
 for all of the files that you track.
 
 Let's see how this works.
-First, open the `Atom` text editor and create a new file,
+
+**Step 7:** open the [`Atom`](http://atom.io) text editor and create a new file,
 then save it in your repository directory as `fox.txt`.
 
-In your terminal, list the contents of the directory
+**Step 8:** In your terminal, list the contents of the directory
 to be sure the file was created.
 
 ```sh
@@ -238,7 +241,8 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 So `git` sees the file exists,
 but it tells you it's not being tracked.
-Let's fix that (the `status` message helpfully tells you how):
+
+**Step 9:** Let's fix that (the `status` message helpfully tells you how):
 
 ```sh
 my_repo $ git add fox.txt
@@ -255,15 +259,16 @@ Changes to be committed:
 	new file:   fox.txt
 ```
 
-The file is now "[][^staged]" -
+The file is now "[^staged]" -
 that is ready to be "committed."
-In git, a "[][^commit]" is used to register a specific version of a repository.
+In git, a "[^commit]" is used to register a specific version of a repository.
 The current state of all of the tracked files in the repository
 will be recorded.
 
 We don't really need to track an empty file,
 let's add some text to it.
-In Atom, add the following line to `fox.txt` **and save**.
+
+**Step 10:** In Atom, add the following line to `fox.txt` **and save**.
 
 ```
 The quick fox jumped.
@@ -316,7 +321,7 @@ index e69de29..395235f 100644
 The syntax of this output is perhaps a bit confusing,
 but it's saying that a line was added to `fox.txt`.
 
-Let's go ahead and stage this change,
+**Step 11:** Let's go ahead and stage this change,
 and then make our first commit.
 
 ```sh
@@ -354,7 +359,7 @@ to keep track of those changes.
     your terminal may transform into a text editor.
     If this happens,
     you may find it difficult to return to the command prompt.
-    Try typing `:q!` (don't copy/paste) then `enter`.
+    Try typing (don't copy/paste) `:q!` then `enter`.
 
     If this doesn't work, ask for assistance.
     If Kevin or the TAs are unavailable,
@@ -370,26 +375,27 @@ If you don't trust me,
 the fact that almost every software company uses git (or something similar)
 should give you some confidence that it's important.
 
-In any case, this entire course will use git and github.com (a website for
-managing and collaborating on git repositories).
+In any case, this entire course will use git and github.com
+(a website for managing and collaborating on git repositories).
 So let's work on doing that.
 
 ### Cloning a repository
 
-If you haven't already, sign up for a github account at https://github.com/join
+**Step 0a:** If you haven't already, sign up for a github account at https://github.com/join
 
 !!! warning "Privacy Note"
     You do not need to use your `wellesley.edu` email address to create this account,
     but let Kevin know if you use a different address
     so that you get credit for your work.
 
-If you'd like, you may sign up for a [github student discount pack](https://education.github.com/pack). This is not necessary for this course.
+**Step 0b:** If you'd like, you may sign up for a [github student discount pack](https://education.github.com/pack). This is not necessary for this course.
 
-Next, accept `Assignment1` at [this link](https://classroom.github.com/a/M0Xe9uT2)
+**Step 1:** Accept `Assignment1` at [this link](https://classroom.github.com/a/M0Xe9uT2)
 
 When you accept the assignment,
 a git repository is created in your github account.
-Click the link shown on the webpage
+
+**Step 2:** Click the link shown on the webpage
 
 ![accept assignment](https://user-images.githubusercontent.com/3502975/67243455-8ee74800-f425-11e9-867e-c81368c82cad.png)
 
@@ -400,14 +406,14 @@ You can click on the directories and files
 to see their contents.
 
 Of course, this repository is stored on github, not your computer.
-We can fix that by [][^clone]ing this repository
+We can fix that by [^clone]ing this repository
 to your computer.
 
-Find the repository url on the github page:
+**Step 3a:** Find the repository url on the github page:
 
 ![clone repo](https://user-images.githubusercontent.com/3502975/67320638-7c7c1580-f4dc-11e9-8e6e-f5228bc96e86.png)
 
-Copy the url listed, and then in your terminal,
+**Step 3b:** Copy the url listed, and then in your terminal,
 
 ```sh
 $ git clone <paste-url>
@@ -420,11 +426,12 @@ remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (18/18), done.
 ```
 
-You should now have a new directory called `lesson-1-<your_username>/`.
-Change your working directory, and do `git status`
+You should now have a new directory called `lesson1-<your_username>/`.
+
+**Step 4:** Change your working directory, and do `git status`
 
 ```sh
-$ git status
+lesson1 $ git status
 ```
 ```
 On branch master
@@ -433,19 +440,19 @@ Your branch is up to date with 'origin/master'.
 nothing to commit, working tree clean
 ```
 
-You now have a local copy of the [][^remote] repository.
+You now have a local copy of the [^remote] repository.
 By default, the name of this remote is `origin`.
 
-In principal, it is possble to have many remotes
+In principal, it is possible to have many remotes
 and many local copies,
 but in practice, you'll usually only have one of each.
 See the url of `origin`:
 
 ```sh
-$ git remote get-url origin
+lesson1 $ git remote get-url origin
 ```
 ```
-https://github.com/wellesley-bisc195/lesson-1-<your_username>
+https://github.com/wellesley-bisc195/lesson1-<your_username>
 ```
 
 There are many other useful options for `git remote`.
@@ -460,14 +467,14 @@ These files contain some python code.
 Let's take a look at these files using the terminal:
 
 ```sh
-lesson1-kescobo $ ls example
+lesson1 $ ls example
 ```
 ```
 run.py            some_functions.py some_variables.py
 ```
 
 ```sh
-lesson1-kescobo $ head example/some_functions.py
+lesson1 $ head example/some_functions.py
 ```
 ```
 def say_name(name):
@@ -477,10 +484,10 @@ def say_age(age):
     print("You are {} years old".format(age))
 ```
 
-You can run this code in your terminal:
+**Step 1:** You can run this code in your terminal:
 
 ```sh
-lesson1-kescobo $ python example/run.py
+lesson1 $ python example/run.py
 ```
 ```
 Hi there Kevin!
@@ -489,12 +496,13 @@ You are 35 years old
 
 I'm guessing the output of this program is incorrect -
 at least for you.
-Open up `example/some_variables.py`
+
+**Step 2:** Open up `example/some_variables.py`
 and change the values to be more appropriate.
 Be sure to save the file,
 then execute `python example/run.py` again.
 
-Once you have it working,
+**Step 3:** Once you have it working,
 go ahead and commit the changes.
 Be sure to use an informative commit message.
 
@@ -502,7 +510,7 @@ Check out your commit history
 to see the changes you've made:
 
 ```sh
-lesson1-kescobo $ git log --pretty=oneline | head
+lesson1 $ git log --pretty=oneline | head
 ```
 ```
 573c6bc36101053ba4189b95842462906b1fa898 Merge pull request #1 from wellesley-bisc195/assignment
@@ -534,7 +542,8 @@ and in the `main()` function,
 you can see `say_name(n)` and `say_age(a)`.
 
 This is not an accident.
-Change the line `def say_name(name):`
+
+**Step 4:** Change the line `def say_name(name):`
 in `some_functions.py` to `def say_the_name(name):`,
 save the file,
 then try to run `python example/run.py` again.
@@ -544,7 +553,7 @@ You should get an `ImportError`,
 since `run.py` is trying to import something called `say_name`,
 but this doesn't exist anymore.
 
-OK, so now fix the line starting with `from some_functions`,
+**Step 5:** Now fix the line starting with `from some_functions`,
 to import `say_the_name` instead of `say_name`.
 Can you run the code now?
 
@@ -582,7 +591,7 @@ Assuming you haven't made any new commits since you had a working program,
 just do
 
 ```sh
-lesson1-kescobo $ git reset --hard HEAD
+lesson1 $ git reset --hard HEAD
 ```
 
 `HEAD` is short-hand for the last commit on this branch.
@@ -598,9 +607,9 @@ We'll talk about more complicated uses of `git reset` later.
 ### Practice
 
 The variables `a` and `n` in `some_variables.py` aren't very informative.
-It's usually a good idea to have variable and function names
-be "self documenting", that is have the name tell you something
-about what they're for.
+It's usually a good idea
+to have variable and function names be "self documenting",
+that is have the name tell you something about what they're for.
 Change these variables to `my_age` and `my_name` respectively,
 then fix `run.py` so that it uses these new variables.
 
@@ -608,7 +617,7 @@ Be sure to save the files and `commit` your changes
 when everything is working again
 (you can also commit intermediate steps).
 
-### Assignment1
+## Assignment1
 
 The `src` directory in the `Lesson1` repo
 contains a code file called `assignment.jl`.
@@ -629,7 +638,7 @@ but my philosophy is "commit early, commit often."
     the `-a` (or `--all`) flag automatically adds all previously tracked files.
 
 Once you've made and committed the requested changes,
-it's time to [][^push] those commits back to the remote.
+it's time to [^push] those commits back to the remote.
 When you cloned this repo,
 git automatically set the remote tracking branch,
 so you can just do
