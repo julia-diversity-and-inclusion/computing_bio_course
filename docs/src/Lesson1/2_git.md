@@ -50,7 +50,7 @@ and keeping track of the versions of multiple files at the same time is necessar
 ## `git` is a program for "distributed version control"
 
 `git` is a distributed version control system (DVCS).
-That is, it helps one keep track of their code (version control system),
+That is, it helps one keep track of one's code,
 and the information about versions is distributed among many systems.
 
 Early version control systems were centralized -
@@ -63,7 +63,7 @@ but is also a bit impractical.
 
 By contrast, git is distributed -
 each user's system contains the entire revision history,
-and conflicts between are explicitly managed when
+and conflicts between versions are explicitly managed when
 two different edits to the code are brought together.
 Don't worry if this isn't super clear at this stage -
 we'll get into some practical examples in a sec.
@@ -135,9 +135,9 @@ And follow the prompts.
 If you are asked for your password,
 use the one you use to log into your computer.
 Note that you will not see anything appear as you type,
-just enter the password and hit `enter`.
+just type the password and hit `enter`.
 
-### Configuring git
+### [Configuring git](@id configuring_git)
 
 The next step is to tell git your name and email address,
 so that you are credited with the changes you make to repositories.
@@ -450,6 +450,163 @@ https://github.com/wellesley-bisc195/lesson-1-<your_username>
 
 There are many other useful options for `git remote`.
 Take a look by executing `git remote --help`.
+
+### Example use case
+
+The `Lesson1` repository has a directory called `example`
+that contains some files ending in `.py`.
+These files contain some python code.
+
+Let's take a look at these files using the terminal:
+
+```sh
+lesson1-kescobo $ ls example
+```
+```
+run.py            some_functions.py some_variables.py
+```
+
+```sh
+lesson1-kescobo $ head example/some_functions.py
+```
+```
+def say_name(name):
+    print("Hi there {}!".format(name))
+
+def say_age(age):
+    print("You are {} years old".format(age))
+```
+
+You can run this code in your terminal:
+
+```sh
+lesson1-kescobo $ python example/run.py
+```
+```
+Hi there Kevin!
+You are 35 years old
+```
+
+I'm guessing the output of this program is incorrect -
+at least for you.
+Open up `example/some_variables.py`
+and change the values to be more appropriate.
+Be sure to save the file,
+then execute `python example/run.py` again.
+
+Once you have it working,
+go ahead and commit the changes.
+Be sure to use an informative commit message.
+
+Check out your commit history
+to see the changes you've made:
+
+```sh
+lesson1-kescobo $ git log --pretty=oneline | head
+```
+```
+573c6bc36101053ba4189b95842462906b1fa898 Merge pull request #1 from wellesley-bisc195/assignment
+ef95f6c6a59cbb59394cb9de468656c35f619b26 add Project.toml to test
+1efa59fcbda7751fd39e3cda85c469aaaafc6ed0 fix tests
+40236a8271349c3ac7ca5d922809eb1d9197932b use comp bio course repo
+e9db777df8e4ecf7dd54cb67ca2e2c971d3df5cb end function
+bca2885725384e2827d18d4b57244f04c8290f71 remove docs, work on assignment
+```
+
+You'll see something different, of course,
+but at the top you should see you recent commits,
+including the commit messages you wrote.
+
+So far, this might seem like something
+that could have been handled with google docs.
+You only had to change a single file.
+Let's try something a little more complicated.
+
+If you open the files in atom,
+you might notice that there are a bunch of connections
+between the files.
+For example, in `some_functions.py`,
+I've defined the `say_name()` and `say_age()` functions,
+then in `run.py`,
+one of the first lines is
+`from some_functions import say_name, say_age`,
+and in the `main()` function,
+you can see `say_name(n)` and `say_age(a)`.
+
+This is not an accident.
+Change the line `def say_name(name):`
+in `some_functions.py` to `def say_the_name(name):`,
+save the file,
+then try to run `python example/run.py` again.
+What happens?
+
+You should get an `ImportError`,
+since `run.py` is trying to import something called `say_name`,
+but this doesn't exist anymore.
+
+OK, so now fix the line starting with `from some_functions`,
+to import `say_the_name` instead of `say_name`.
+Can you run the code now?
+
+Nope, you should now be getting a `NameError`,
+since you didn't change the call to `say_name` inside the `main()` function.
+
+!!! tip
+    Seeing error messages when you try to run code
+    is a **very** normal part of programming,
+    and not just when you're learning.
+    A lot of the error message might seem like [gobbledygook](https://en.wikipedia.org/wiki/Gibberish),
+    but it's worth paying attention.
+    Learning to find the useful information in an error message
+    is incredibly useful when trying to debug your code.
+
+    Like most of coding, this takes lots of practice,
+    but here are some places to start:
+
+    - Can you find the name of the error?
+    - Are their parts of the message in plain english
+      (those parts are usually quite helpful)?
+    - can you find line numbers/file names
+      pointing to where the problem might be?
+
+OK, changing to `say_the_name` is maybe not worth it.
+But you've now changed a bunch of things -
+how do you get back to a working version?
+
+In this silly little case, perhaps it's not so hard,
+but in real-life coding,
+one often needs to make many changes to many different files.
+Git makes this easy.
+
+Assuming you haven't made any new commits since you had a working program,
+just do
+
+```sh
+lesson1-kescobo $ git reset --hard HEAD
+```
+
+`HEAD` is short-hand for the last commit on this branch.
+The `--hard` flag undoes any changes.
+We'll talk about more complicated uses of `git reset` later.
+
+!!! note
+    If you did make commits in the mean time, no problem.
+    Use the `git log` command from above to see your recent commits,
+    then copy the commit hash (the weird sequence of characters on the left)
+    and use that instead of `HEAD` in the `git reset` command.
+
+### Practice
+
+The variables `a` and `n` in `some_variables.py` aren't very informative.
+It's usually a good idea to have variable and function names
+be "self documenting", that is have the name tell you something
+about what they're for.
+Change these variables to `my_age` and `my_name` respectively,
+then fix `run.py` so that it uses these new variables.
+
+Be sure to save the files and `commit` your changes
+when everything is working again
+(you can also commit intermediate steps).
 
 ### Assignment1
 
