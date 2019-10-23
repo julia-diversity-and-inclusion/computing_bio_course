@@ -1,0 +1,10 @@
+name = "ComputationalBiologyCourse"
+uuid = "b466c462-5a1c-40b1-8eaa-0f4a2ec00db7"
+keywords = ["biology", "bioinformatics", ]
+license = "MIT"
+desc = "Functions and documentation for 'Essental Skills for Computational Biology' course"
+authors = ["kescobo <kevbonham@gmail.com>"]
+version = "0.0.1"
+
+[deps]
+DataDeps = "124859b0-ceae-595e-8997-d05f6a7a8dfe"
