@@ -5,7 +5,7 @@ your computer's **[^file system]**.
 If you've ever looked at files on your `Desktop`,
 or opened `Finder`/`Explorer` and navigated to your `Documents` folder,
 you've been using the file system.
-Data is stored on your hardrive as a continuous binary sequence (just `1`s and `0`s)
+Data is stored on your hard drive as a continuous binary sequence (just `1`s and `0`s)
 and without a filesystem, it would be impossible to find anything!
 
 `Finder`/`Explorer` are software programs used to interact with your filesystem.
@@ -14,15 +14,15 @@ which are blobs of information (eg. a `.docx` file containing a MS Word doc)
 and folders, which can contain files as well as other folders.
 Just to be confusing,
 what we colloquially call folders are technically called "directories."
-I will use the terms interchangably.
+I will use the terms interchangeably.
 
 ![File system hierarchy](https://www.oreilly.com/library/view/macintosh-terminal-pocket/9781449328962/httpatomoreillycomsourceoreillyimages1448104.png)
 
 You may not have thought much about how the filesystem is organized,
 but you probably have an intuitive sense of how this works.
-Your **[^home]** directory contains the `Desktop` and `Documents` folders,
-each of which might contain many other subfolders and/or files,
-and each subfolder may have yet more subfolders and files and so on.
+Your **[^home]** directory contains the `Desktop` and `Documents` directories,
+each of which might contain many other subdirectories and/or files,
+and each subdirectory may have yet more subdirectories and files and so on.
 
 `Finder`/`Explorer` are examples of a graphical user interface (GUI - pronounced "gooey"),
 that is a program that allows you to interact with it visually.
@@ -44,9 +44,19 @@ you'll see that it is a powerful way to get a lot done quickly.
 1. Click Start -> Programs
 2. Open Windows Subsystem for Linux
 
-You will be greated with a white or black box that contains some text,
+You will be greeted with a white or black box that contains some text,
 and a cursor next to the dollar symbol `$`.
 This is the command prompt.
+
+!!! tip
+    Using the terminal can be quite challenging at first.
+    For one, you cannot interact with text
+    in the same way as you would in a word-processing program
+    like Microsoft Word.
+    In particular,
+    you can't use your mouse to do things like click to move a cursor,
+    or highlight a section of text to be deleted.
+    Instead, you have to use ← and → keys.
 
 ## 1.2 Walk around your file system
 
@@ -78,7 +88,7 @@ this probably displayed something like `/Users/yourname`.
     Whenever you see code blocks in these lessons that start with `$ `,
     this is a hint that it is a shell command.
     When copying or typing these commands,
-    **do not** include the `$ `.
+    **do not** include the `$ ` (or anything to the left of it).
     For example, to complete the task above,
     you should only type `pwd`,
     then press enter.
@@ -147,8 +157,8 @@ While on Windows machines, the root is probably `C:\`.
     rather than seeing your Windows OS home folder.
 
     But WSL has access to your files in a special path, `/mnt/c/`.
-    If you want to see the files in your Windows `Documents/` directory for example,
-    look in `/mnt/c/Users/yourname/Documents`.
+    If you want to see the files in your Windows `Desktop/` directory for example,
+    look in `/mnt/c/Users/yourname/Desktop`.
 
 ### Moving around
 
@@ -191,15 +201,112 @@ your home folder and `root`,
 which are specified by `~/` and `/` respectively
 when placed at the beginning of the path.
 
+Up above, when we looked at the contents of the Desktop using ls,
+we provided the _relative path_ from where we were in the home folder.
+You can tell, because the path did not start with `~/` or `/`.
 
+We could have done the same thing using an _absolute path_:
 
+```sh
+$ ls ~/Desktop
+```
+```
+df.csv  dm.csv  dupes.csv  itp.svg
+```
 
-- `cd`
-- `ls`
-  - `ls -al`
-- relative vs absolute paths
+The output here should be the same as what you got above.
+But what if we're in a different location?
+
+In order to `c`hange the working `d`irectory,
+we use the `cd` command,
+giving a path as an argument.
+For example, to make `Desktop` the current working directory:
+
+```sh
+$ cd ~/Desktop
+```
+
+!!! warning "Checking Question"
+    Is `~/Desktop` a relative or absolute path?
+
+It's a good idea (in general, but especially while learning)
+to repeatedly check that
+the thing you think happened actually happened.
+
+```sh
+$ pwd
+```
+```
+/home/kevin/Desktop
+```
+```sh
+$ ls
+```
+```
+df.csv  dm.csv  dupes.csv  itp.svg
+```
+
+Notice that with `ls`,
+we didn't have to give `Desktop` as an argument this time.
+By default, `ls` lists files in the current working directory.
+
+!!! warning "Checking Questions"
+    1. What does `pwd` stand for?
+    2. What does `ls` stand for?
+    3. With `Desktop` as your working directory,
+        how would you list the contents of your home folder?
+
+Let's go back to the home folder.
+Again, we can provide a relative or an absolute path -
+the absolute path back to home is always `~/`,
+but how do we do the relative path?
+To walk into subdirectories,
+we can just provide the name of the subdirectory,
+but how do we walk "backwards",
+into a parent directory?
+
+In unix, parent directories are indicated with `../`.
+So to go back home from `/home/kevin/Desktop` using a relative path,
+I would write:
+
+```sh
+$ cd ../
+$ pwd
+```
+```
+/home/kevin
+```
+
+### Practice
+
+Practice moving around your file system using `cd`,
+and check where you are using `pwd` and `ls`.
+If you get lost,
+just enter `cd ~/` to get yourself home.
+
+!!! tip
+    Rather than typing long paths (or even short ones),
+    use the `<TAB>` key to do auto-completion.
+    For example, with your home folder as your current working directory,
+    type `ls De` (don't execute), then press `<TAB>`.
+    This should cause the terminal to fill in `ls Desktop` automatically.
+
+    Try typing `ls Do`, then `<TAB>`.
+    The first time, nothing happens.
+    Why? Because both `Documents` and `Downloads` are valid completions,
+    and the terminal doesn't know which one you want.
+    If you hit `<TAB>` again,
+    it will display all of the options available.
+    If you add a `c`, then hit `<TAB>`, it should complete `Documents`.
+
+    As you're navigating around,
+    try to do as little typing as possible.
+    Get into the habit of typing a little bit of a path,
+    then hitting `<TAB>` (twice if nothing shows up the first time).
 
 ## 1.3 Manipulating files
+
+
 
 - `mkdir`, `rmdir`
 - `cp`, `mv`, `rm`
