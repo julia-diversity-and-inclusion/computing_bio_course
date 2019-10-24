@@ -1,7 +1,7 @@
 # Part 1 - Navigating the filesystem using the terminal
 
 You are probably already familiar with
-your computer's **[^file system]**.
+your computer's **[^file-system]**.
 If you've ever looked at files on your `Desktop`,
 or opened `Finder`/`Explorer` and navigated to your `Documents` folder,
 you've been using the file system.
@@ -27,7 +27,7 @@ and each subdirectory may have yet more subdirectories and files and so on.
 `Finder`/`Explorer` are examples of a graphical user interface (GUI - pronounced "gooey"),
 that is a program that allows you to interact with it visually.
 However, GUIs are difficult to design and maintain,
-so most bioinformatics tools are built around **[^command line]**
+so most bioinformatics tools are built around **[^command-line]**
 or text-based interfaces.
 The good news is that the organization of the filesystem
 is the same whether you're interacting with it in a GUI or in the terminal.
@@ -67,7 +67,7 @@ may or may not contain objects (files),
 and may have one or many roads leading to new locations (subdirectories).
 
 Your present location,
-referred to as the **[^working directory]**,
+referred to as the **[^working-directory]**,
 is your home folder when you first open the terminal.
 Let's see where that is.
 
@@ -171,7 +171,7 @@ One way to do this would be to give directions from where you are:
 3. ... etc
 
 In this case,
-you're providing a [^relative path] -
+you're providing a [^relative-path] -
 the directions only make sense if the person is starting in your room.
 If they're at the Science Center and they follow your instructions,
 they will become hopelessly lost.
@@ -185,7 +185,7 @@ you could provide directions from a shared point of reference.
 3. ... etc
 
 In this case,
-you're providing an [^absolute path] -
+you're providing an [^absolute-path] -
 no matter where the person is at the time,
 the directions will make sense.
 
@@ -304,12 +304,74 @@ just enter `cd ~/` to get yourself home.
     Get into the habit of typing a little bit of a path,
     then hitting `<TAB>` (twice if nothing shows up the first time).
 
-## 1.3 Manipulating files
+## 1.3 Manipulating files and directories
 
 Of course, looking around is not the only thing you can do from the terminal.
+Using the terminal allows you to rapidly
+view, edit, and otherwise manipulate
+stuff in your file system.
 
-!!! practice
-    testing out practice
+!!! danger
+    It is possible to seriously and irreparably damage your computer
+    using commands from the terminal.
+
+    Be sure to follow instructions carefully,
+    and be sure to keep your backups current.
+
+First, let's create a directory for use in this course.
+You can put it in your home directory,
+or in `Documents`,
+or if you have a directory where your course files usually go,
+that's fine too.
+
+I'll assume you're making this in `~/Documents/`,
+but if you want it somewhere else,
+just modify the path accordingly.
+the command to `m`a`k`e a `dir`ectory is `mkdir <path>`.
+
+!!! tip
+    In many examples like this,
+    I will refer to things wrapped in `<>`,
+    like `<path>` or `<username>`.
+    These are stand-ins for some other value.
+    This is a signal that you should replace that text
+    (including the `<` and `>` characters)
+    with the appropriate value.
+
+```sh
+$ mkdir ~/Documents/bisc195
+$ cd ~/Documents/bisc195
+$ pwd
+```
+```
+/home/kevin/Documents/bisc195
+```
+
+Now, copy and execute the following command -
+don't worry about what it does.
+(if you really want to know, you can read about it here: [^while-loop])
+
+```sh
+bisc195 $ for i in {1..9}; do echo "This is file #${i}" > "file${i}.txt"; ((i++)); done
+bisc195 $ ls
+```
+```
+file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt file7.txt file8.txt file9.txt
+```
+
+The code you executed created 9 files,
+each of which contains a bit of text.
+Look at the contents of `file1.txt` using the `head` command.
+
+```sh
+$ head file1.txt
+```
+```
+This is file #1
+```
+
+The `head` command prints the first 10 lines of a file by default,
+but this file only has 1 line, so that's all that's shown.
 
 - `mkdir`, `rmdir`
 - `cp`, `mv`, `rm`
@@ -317,26 +379,58 @@ Of course, looking around is not the only thing you can do from the terminal.
 
 ## Key Terms
 
-[^file system]:
-a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
+[^file-system]: a hierarchical organization of files and directories. [Additional reading](https://en.wikipedia.org/wiki/File_system)
 
-[^root]:
-the top of the filesystem hierarchy. A folder that contains all other files and folders.
+[^root]: the top of the filesystem hierarchy. A folder that contains all other files and folders.
 
-[^home]:
-a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
+[^home]: a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
 
-[^command line]:
-a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
+[^command-line]: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
 
-[^working directory]:
-the current beginning of relative paths. Equivalent to `.` or `./`
+[^working-directory]: the current beginning of relative paths. Equivalent to `.` or `./`
 
-[^relative path]:
-a path originating at the current working directory
+[^relative-path]: a path originating at the current working directory
 
-[^absolute path]:
-a path originating at the home folder (`~/`) or root `/`
+[^absolute-path]: a path originating at the home folder (`~/`) or root `/`
 
-[^argument]:
-a value passed to a function to operate on
+[^argument]: a value passed to a function to operate on
+
+### More info
+
+Here's some more information for the curious,
+but at least for now,
+it's not necessary to understand it.
+
+[^while-loop]: The code
+
+      ```sh
+      for counter in {1..9}; do echo "This is file #${counter}" > "file${counter}.txt"; done
+      ```
+
+      is an example of a "for loop",
+      which we'll learn more about later.
+      This iterates
+      In this case, the condition is `[ $counter -lt 10 ]`,
+      which means "the value of the `counter` variable is less than 10."
+
+      Inside the loop are 2 commands.
+      First, `"This is file #${counter}" > "file${counter}.txt""` means
+      "write the text 'this is file #1' in a file called `file1.txt`"
+      when the value of `counter` is 1,
+      "write the text 'this is file #2' in a file called `file2.txt`"
+      when the value of `counter` is 2,
+      etc.
+      Second, `(( counter++ ))` means
+      "increment the value of the variable `counter`".
+
+      So, in the first cycle of the loop, `file1.txt` is created,
+      and 1 is added to the value of `counter`.
+      We then go to the top of the loop, and since 2 is less than 10,
+      we go again - `file2.txt` is created,
+      the value of `counter` is set to 3,
+      and so on.
+
+      When `file9.txt` is created and the value of `counter` is set to 10,
+      we again go to the top of the loop,
+      but now the condition `[ $counter -lt 10 ]` is no longer true,
+      and so the loop is complete.
