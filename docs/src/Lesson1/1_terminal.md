@@ -57,19 +57,22 @@ may or may not contain objects (files),
 and may have one or many roads leading to new locations (subdirectories).
 
 Your present location,
-referred to as the **working directory**[^working directory],
+referred to as the **[^working directory]**,
 is your home folder when you first open the terminal.
 Let's see where that is.
+
 In your terminal, type `pwd` and press enter.
+This is the "print working directory" command.
 
 ```sh
 $ pwd
 ```
 ```
-/Users/kevin
+/home/kevin
 ```
 
-This is the "print working directory" command.
+If you're using a Mac,
+this probably displayed something like `/Users/yourname`.
 
 !!! tip
     Whenever you see code blocks in these lessons that start with `$ `,
@@ -82,9 +85,52 @@ This is the "print working directory" command.
 
     `$` is referred to as the "prompt" or "command prompt."
     When you enter a command, you may or may not see some output
-    (which will not be preceeded by `$`)
+    (which will not be preceded by `$`)
     and once the command has finished executing,
     you will see a new prompt.
+
+    These code blocks will often be followed by a block
+    that does **not** start with a `$`.
+    This is the expected output.
+
+Let's take a look around.
+the `ls` command is used to `l`i`s`t
+the contents of the directory.
+
+```sh
+$ ls
+```
+```
+bin      Documents     R       scratch
+Desktop  Downloads     Public  repos
+```
+
+Your output will likely look a bit different from mine,
+but you'll probably see `Documents` and `Desktop`,
+as well as other directories you may recognize.
+
+The `ls` command can also take a directory
+as an "[^argument]."
+We'll talk more about what that means later -
+for now, just add `Desktop` to the command, separated by a space
+
+```sh
+$ ls Desktop
+```
+```
+df.csv  dm.csv  dupes.csv  itp.svg
+```
+
+Again, your output should look different from mine,
+but (assuming you store anything on your Desktop),
+you should see a list of files and directories.
+If your `Desktop` is pristine, congratulations!
+You won't see any output.
+
+!!! note "Windows Users"
+    A reminder that this `Desktop` is your linux `Desktop`.
+    To see your Windows Desktop,
+    use `/mnt/c/Users/yourname/Desktop` instead.
 
 The filesystem is organized hierarchically -
 At the very top of the hierarchy is the **[^root]**,
@@ -97,21 +143,63 @@ While on Windows machines, the root is probably `C:\`.
     When you open Windows Subsystem for Linux, you're actually running
     a fully functional OS with its own file system.
     As a result, when you type `pwd` in the terminal,
-    you will likely see something like `/home/yourname`,
-    rather than seeing your main OS home folder.
+    you will see something like `/home/yourname`,
+    rather than seeing your Windows OS home folder.
 
     But WSL has access to your files in a special path, `/mnt/c/`.
-    If you want to see the files in your `Documents` folder for example,
+    If you want to see the files in your Windows `Documents/` directory for example,
     look in `/mnt/c/Users/yourname/Documents`.
 
 ### Moving around
+
+Say you are sitting in your room,
+and you want to give someone directions to [Lulu](https://w100.wellesley.edu/lulu).
+One way to do this would be to give directions from where you are:
+
+1. Go out the door,
+2. Go down the hall to the elevator
+3. ... etc
+
+In this case,
+you're providing a [^relative path] -
+the directions only make sense if the person is starting in your room.
+If they're at the Science Center and they follow your instructions,
+they will become hopelessly lost.
+
+Alternatively,
+you could provide directions from a shared point of reference.
+
+1. Start at the campus gate on the corner of Weston Rd and Central St
+2. Walk down the path and turn right just past the Child Study Center
+   towards the Botanical Gardens
+3. ... etc
+
+In this case,
+you're providing an [^absolute path] -
+no matter where the person is at the time,
+the directions will make sense.
+
+An absolute path is great,
+since the same instructions are useful in most situations,
+but in many cases, it would be tedious to always have to start instructions
+from the same location.
+
+When providing a file path to a unix operating system,
+you can also provide relative or absolute paths.
+There are two shared points of reference,
+your home folder and `root`,
+which are specified by `~/` and `/` respectively
+when placed at the beginning of the path.
+
+
+
 
 - `cd`
 - `ls`
   - `ls -al`
 - relative vs absolute paths
 
-### Manipulating files
+## 1.3 Manipulating files
 
 - `mkdir`, `rmdir`
 - `cp`, `mv`, `rm`
@@ -119,8 +207,19 @@ While on Windows machines, the root is probably `C:\`.
 
 ## Key Terms
 
-[^file system]: a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
-[^root]: the top of the filesystem hierarchy. A folder that contains all other files and folders.
-[^home]: a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
-[^command line]: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
-[^working directory]: the current beginning of relative paths. Equivalent to `.` or `./`
+[^file system]:
+a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
+[^root]:
+the top of the filesystem hierarchy. A folder that contains all other files and folders.
+[^home]:
+a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
+[^command line]:
+a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
+[^working directory]:
+the current beginning of relative paths. Equivalent to `.` or `./`
+[^relative path]:
+a path originating at the current working directory
+[^absolute path]:
+a path originating at the home folder (`~/`) or root `/`
+[^argument]:
+a value passed to a function to operate on
