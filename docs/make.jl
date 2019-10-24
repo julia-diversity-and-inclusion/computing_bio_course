@@ -14,7 +14,8 @@ makedocs(
     ],
     authors = "Kevin Bonham, PhD",
     format = Documenter.HTML(
-        prettyurls = get(ENV, "CI", nothing) == "true")
+        prettyurls = get(ENV, "CI", nothing) == "true",
+        assets = ["assets/admonitions.css", ])
 )
 
 const repo="github.com/wellesley-bisc195/computing_bio_course.git"

@@ -56,7 +56,7 @@ This is the command prompt.
     In particular,
     you can't use your mouse to do things like click to move a cursor,
     or highlight a section of text to be deleted.
-    Instead, you have to use ← and → keys.
+    Instead, you have to use `←` and `→` keys.
 
 ## 1.2 Walk around your file system
 
@@ -280,7 +280,7 @@ $ pwd
 ### Practice
 
 Practice moving around your file system using `cd`,
-and check where you are using `pwd` and `ls`.
+and checking where you are using `pwd` and `ls`.
 If you get lost,
 just enter `cd ~/` to get yourself home.
 
@@ -306,7 +306,10 @@ just enter `cd ~/` to get yourself home.
 
 ## 1.3 Manipulating files
 
+Of course, looking around is not the only thing you can do from the terminal.
 
+!!! practice
+    testing out practice
 
 - `mkdir`, `rmdir`
 - `cp`, `mv`, `rm`
@@ -316,17 +319,24 @@ just enter `cd ~/` to get yourself home.
 
 [^file system]:
 a hierarchical organization of files and folders. [Additional reading](https://en.wikipedia.org/wiki/File_system)
+
 [^root]:
 the top of the filesystem hierarchy. A folder that contains all other files and folders.
+
 [^home]:
 a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
+
 [^command line]:
 a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
+
 [^working directory]:
 the current beginning of relative paths. Equivalent to `.` or `./`
+
 [^relative path]:
 a path originating at the current working directory
+
 [^absolute path]:
 a path originating at the home folder (`~/`) or root `/`
+
 [^argument]:
 a value passed to a function to operate on
