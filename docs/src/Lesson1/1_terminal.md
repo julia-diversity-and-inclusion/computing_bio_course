@@ -1,7 +1,7 @@
 # Part 1 - Navigating the filesystem using the terminal
 
 You are probably already familiar with
-your computer's **[^file-system]**.
+your computer's **[^filesystem]**.
 If you've ever looked at files on your `Desktop`,
 or opened `Finder`/`Explorer` and navigated to your `Documents` folder,
 you've been using the file system.
@@ -27,7 +27,7 @@ and each subdirectory may have yet more subdirectories and files and so on.
 `Finder`/`Explorer` are examples of a graphical user interface (GUI - pronounced "gooey"),
 that is a program that allows you to interact with it visually.
 However, GUIs are difficult to design and maintain,
-so most bioinformatics tools are built around **[^command-line]**
+so most bioinformatics tools are built around **[^commandline]**
 or text-based interfaces.
 The good news is that the organization of the filesystem
 is the same whether you're interacting with it in a GUI or in the terminal.
@@ -67,7 +67,7 @@ may or may not contain objects (files),
 and may have one or many roads leading to new locations (subdirectories).
 
 Your present location,
-referred to as the **[^working-directory]**,
+referred to as the **[^workingdirectory]**,
 is your home folder when you first open the terminal.
 Let's see where that is.
 
@@ -171,7 +171,7 @@ One way to do this would be to give directions from where you are:
 3. ... etc
 
 In this case,
-you're providing a [^relative-path] -
+you're providing a [^relativepath] -
 the directions only make sense if the person is starting in your room.
 If they're at the Science Center and they follow your instructions,
 they will become hopelessly lost.
@@ -185,7 +185,7 @@ you could provide directions from a shared point of reference.
 3. ... etc
 
 In this case,
-you're providing an [^absolute-path] -
+you're providing an [^absolutepath] -
 no matter where the person is at the time,
 the directions will make sense.
 
@@ -349,7 +349,7 @@ $ pwd
 
 Now, copy and execute the following command -
 don't worry about what it does.
-(if you really want to know, you can read about it here: [^while-loop])
+(if you really want to know, you can read about it here: [^whileloop])
 
 ```sh
 bisc195 $ for i in {1..9}; do echo "This is file #${i}" > "file${i}.txt"; ((i++)); done
@@ -373,25 +373,27 @@ This is file #1
 The `head` command prints the first 10 lines of a file by default,
 but this file only has 1 line, so that's all that's shown.
 
+
+
 - `mkdir`, `rmdir`
 - `cp`, `mv`, `rm`
 - globs
 
 ## Key Terms
 
-[^file-system]: a hierarchical organization of files and directories. [Additional reading](https://en.wikipedia.org/wiki/File_system)
+[^filesystem]: a hierarchical organization of files and directories. [Additional reading](https://en.wikipedia.org/wiki/File_system)
 
 [^root]: the top of the filesystem hierarchy. A folder that contains all other files and folders.
 
 [^home]: a user's primary folder containing `Desktop`, `Documents`, and other user-specific folders and files.
 
-[^command-line]: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
+[^commandline]: a text-based interface for interacting with your computer. Also referred to as "terminal" or "shell."
 
-[^working-directory]: the current beginning of relative paths. Equivalent to `.` or `./`
+[^workingdirectory]: the current beginning of relative paths. Equivalent to `.` or `./`
 
-[^relative-path]: a path originating at the current working directory
+[^relativepath]: a path originating at the current working directory
 
-[^absolute-path]: a path originating at the home folder (`~/`) or root `/`
+[^absolutepath]: a path originating at the home folder (`~/`) or root `/`
 
 [^argument]: a value passed to a function to operate on
 
@@ -401,7 +403,7 @@ Here's some more information for the curious,
 but at least for now,
 it's not necessary to understand it.
 
-[^while-loop]: The code
+[^whileloop]: The code
 
       ```sh
       for counter in {1..9}; do echo "This is file #${counter}" > "file${counter}.txt"; done
