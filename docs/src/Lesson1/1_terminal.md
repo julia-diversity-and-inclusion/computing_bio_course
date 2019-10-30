@@ -352,14 +352,21 @@ don't worry about what it does.
 (if you really want to know, you can read about it here: [^whileloop])
 
 ```sh
-bisc195 $ for i in {1..9}; do echo "This is file #${i}" > "file${i}.txt"; ((i++)); done
+bisc195 $ for i in {1..10}; do echo "This is file #${i}" > "file${i}.txt"; ((i++)); done
+```
+
+It should finish very quickly.
+Let's look at what it did
+
+```
 bisc195 $ ls
 ```
 ```
-file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt file7.txt file8.txt file9.txt
+file1.txt  file2.txt  file4.txt  file6.txt  file8.txt
+file10.txt file3.txt  file5.txt  file7.txt  file9.txt
 ```
 
-The code you executed created 9 files,
+The code you executed created 10 files,
 each of which contains a bit of text.
 Look at the contents of `file1.txt` using the `head` command.
 
@@ -372,6 +379,121 @@ This is file #1
 
 The `head` command prints the first 10 lines of a file by default,
 but this file only has 1 line, so that's all that's shown.
+
+!!! note
+    File names usually have 2 parts - the name and the "extension."
+    The extension, like `.txt` or `.docx`,
+    usually tells you something about what the file contains,
+    or how it's encoded,
+    but this is not a requirement.
+    The files above could have been named `fileX.whatever`,
+    and still have the same content.
+    Usually, it's a good idea to have the extension reflect what's in the file,
+    `.txt` for text, `.jl` for julia code etc.
+
+We can look at multiple files at the same time using the con`cat`enate command:
+
+```sh
+$ cat file1.txt file2.txt file3.txt
+```
+```
+This is file #1
+This is file #2
+This is file #3
+```
+
+`cat` takes any number of files (even just 1!)
+and prints their entire content to the screen one after another.
+Be careful - some files are really long,
+and will go on and on and on and on and...
+
+If we want to print the content of all 9 files,
+we could type them all out,
+but that would get tedious.
+There are many useful shortcuts in programming
+(programmers ~~are lazy~~ like efficiency),
+one of which is [`glob`](https://en.wikipedia.org/wiki/Glob_%28programming%29) patterns.
+
+The most common `glob` is `*`,
+which stands for any number of characters,
+including none.
+
+For example,
+
+```sh
+$ cat *.txt
+```
+```
+This is file #1
+This is file #10
+This is file #2
+This is file #3
+This is file #4
+This is file #5
+This is file #6
+This is file #7
+This is file #8
+This is file #9
+```
+
+Here, `*.txt` means "anything that ends with `.txt`".
+
+Another `glob` is `?`, which matches any single character.
+
+```sh
+$ cat file?.txt
+```
+```
+This is file #1
+This is file #2
+This is file #3
+This is file #4
+This is file #5
+This is file #6
+This is file #7
+This is file #8
+This is file #9
+```
+
+Notice that in this example, `file10.txt` is not included,
+since there are 2 characters between `file` and `.txt`.
+
+Finally, you can use brackets to specify specific characters,
+or ranges of characters:
+
+```sh
+$ cat file[2468].txt
+```
+```
+This is file #2
+This is file #4
+This is file #6
+This is file #8
+```
+
+```sh
+$ cat file[6-8].txt
+```
+```
+This is file #6
+This is file #7
+This is file #8
+```
+
+Let's make a new file that contains the content of all of the others.
+The `>` character at the end of a command
+redirects the output of that command into a new file,
+so we can do:
+
+```sh
+$ cat file*.txt > all_files.txt
+$ ls
+```
+```
+all_files.txt file10.txt    file3.txt     file5.txt     file7.txt     file9.txt
+file1.txt     file2.txt     file4.txt     file6.txt     file8.txt
+```
+
 
 
 
