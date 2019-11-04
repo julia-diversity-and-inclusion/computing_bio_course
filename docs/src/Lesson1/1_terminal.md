@@ -354,7 +354,7 @@ don't worry about what it does.
 (if you really want to know, you can read about it here: [^whileloop])
 
 ```sh
-bisc195 $ for i in {1..10}; do echo "This is file #${i}" > "file${i}.txt"; ((i++)); done
+bisc195 $ for i in {1..10}; do echo "This is file #${i}" > "file${i}.txt"; done
 ```
 
 It should finish very quickly.
@@ -796,33 +796,30 @@ it's not necessary to understand it.
 [^whileloop]: The code
 
       ```sh
-      for counter in {1..9}; do echo "This is file #${counter}" > "file${counter}.txt"; done
+      for counter in {1..10}; do echo "This is file #${counter}" > "file${counter}.txt"; done
       ```
 
       is an example of a "for loop",
       which we'll learn more about later.
-      This iterates
-      In this case, the condition is `[ $counter -lt 10 ]`,
-      which means "the value of the `counter` variable is less than 10."
+      This executes code in a loop,
+      usually with something changing each time.
+      Here, the code `for counter in {1..10}` means
+      "run this loop for each of the values from 1-10",
+      and also provides a `counter` variable with that value.
 
-      Inside the loop are 2 commands.
-      First, `"This is file #${counter}" > "file${counter}.txt""` means
+      Inside the loop is a single command:
+      `"This is file #${counter}" > "file${counter}.txt""` means
       "write the text 'this is file #1' in a file called `file1.txt`"
       when the value of `counter` is 1,
       "write the text 'this is file #2' in a file called `file2.txt`"
       when the value of `counter` is 2,
       etc.
-      Second, `(( counter++ ))` means
-      "increment the value of the variable `counter`".
 
-      So, in the first cycle of the loop, `file1.txt` is created,
-      and 1 is added to the value of `counter`.
-      We then go to the top of the loop, and since 2 is less than 10,
-      we go again - `file2.txt` is created,
+      So, in the first cycle of the loop, `file1.txt` is created.
+      We then go to the top of the loop, reset the counter,
+      then we go again - `file2.txt` is created,
       the value of `counter` is set to 3,
       and so on.
 
-      When `file9.txt` is created and the value of `counter` is set to 10,
-      we again go to the top of the loop,
-      but now the condition `[ $counter -lt 10 ]` is no longer true,
-      and so the loop is complete.
+      When `file10.txt` is created, the  loop is finished (`done`).
+      All of this should take less than a second to execute.
