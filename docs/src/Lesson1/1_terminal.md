@@ -338,6 +338,8 @@ the command to `m`a`k`e a `dir`ectory is `mkdir <path>`.
     (including the `<` and `>` characters)
     with the appropriate value.
 
+### Create and explore directories and files
+
 ```sh
 $ mkdir ~/Documents/bisc195
 $ cd ~/Documents/bisc195
@@ -358,7 +360,7 @@ bisc195 $ for i in {1..10}; do echo "This is file #${i}" > "file${i}.txt"; ((i++
 It should finish very quickly.
 Let's look at what it did
 
-```
+```sh
 bisc195 $ ls
 ```
 ```
@@ -371,7 +373,7 @@ each of which contains a bit of text.
 Look at the contents of `file1.txt` using the `head` command.
 
 ```sh
-$ head file1.txt
+bisc195 $ head file1.txt
 ```
 ```
 This is file #1
@@ -394,7 +396,7 @@ but this file only has 1 line, so that's all that's shown.
 We can look at multiple files at the same time using the con`cat`enate command:
 
 ```sh
-$ cat file1.txt file2.txt file3.txt
+bisc195 $ cat file1.txt file2.txt file3.txt
 ```
 ```
 This is file #1
@@ -406,6 +408,8 @@ This is file #3
 and prints their entire content to the screen one after another.
 Be careful - some files are really long,
 and will go on and on and on and on and...
+
+### Glob patterns
 
 If we want to print the content of all 9 files,
 we could type them all out,
@@ -421,7 +425,7 @@ including none.
 For example,
 
 ```sh
-$ cat *.txt
+bisc195 $ cat *.txt
 ```
 ```
 This is file #1
@@ -441,7 +445,7 @@ Here, `*.txt` means "anything that ends with `.txt`".
 Another `glob` is `?`, which matches any single character.
 
 ```sh
-$ cat file?.txt
+bisc195 $ cat file?.txt
 ```
 ```
 This is file #1
@@ -462,7 +466,7 @@ Finally, you can use brackets to specify specific characters,
 or ranges of characters:
 
 ```sh
-$ cat file[2468].txt
+bisc195 $ cat file[2468].txt
 ```
 ```
 This is file #2
@@ -472,7 +476,7 @@ This is file #8
 ```
 
 ```sh
-$ cat file[6-8].txt
+bisc195 $ cat file[6-8].txt
 ```
 ```
 This is file #6
@@ -486,20 +490,284 @@ redirects the output of that command into a new file,
 so we can do:
 
 ```sh
-$ cat file*.txt > all_files.txt
-$ ls
+bisc195 $ cat file*.txt > all_files.txt
+bisc195 $ ls
 ```
 ```
 all_files.txt file10.txt    file3.txt     file5.txt     file7.txt     file9.txt
 file1.txt     file2.txt     file4.txt     file6.txt     file8.txt
 ```
 
+Notice that the `cat` command in this case
+didn't print anything to the screen.
+
+We can check that the right content went into `all_files.txt`
+using `cat` again.
+
+```sh
+bisc195 $ cat all_files.txt
+```
+```
+This is file #1
+This is file #10
+This is file #2
+This is file #3
+This is file #4
+This is file #5
+This is file #6
+This is file #7
+This is file #8
+This is file #9
+```
+
+### `m`o`v`e and `c`o`p`y files
+
+We'll use this directory for the rest of this course,
+but it could use some more organization.
+First, let's make a directory called `lesson1`.
+
+Can you remember how to make a new directory?
+I'm not going to provide the command for this step,
+but before moving on,
+you should be able to execute the following command without getting an error:
+
+```sh
+bisc195 $ ls lesson1/
+bisc195 $
+```
+
+When you first create the directory,
+it will be empty,
+so `ls` won't return anything.
+
+If you see `ls: lesson1: No such file or directory`,
+don't move on to the next step.
+
+!!! warning
+    Neither the `mv` nor `cp` command ask before overwriting files,
+    and there's no "undo" at the command line.
+    In other words, if you move or copy a file
+    into a directory with file of the same name,
+    the later file will be destroyed and will not be recoverable.
+
+    Use caution when using these commands outside the context of these lessons.
+
+Once you've created the `lesson1/` directory,
+let's `m`o`v`e the text files we've created into it.
+The `mv` command take the form `mv <source> <destination>`.
+For example:
+
+```sh
+bisc195 $ mv file1.txt lesson1/file1.txt
+bisc195 $
+```
+
+Now,
+
+```sh
+bisc195 $ ls lesson1
+```
+```
+file1.txt
+```
+
+```sh
+bisc195 $ ls
+```
+```
+all_files.txt file2.txt     file4.txt     file6.txt     file8.txt     lesson1
+file10.txt    file3.txt     file5.txt     file7.txt     file9.txt
+```
+
+As you can see, `file1.txt` has been moved to the `lesson1/` subdirectory,
+and is no longer in the current directory.
+
+If we don't want to change the name of the file,
+we can actually just provide a directory as the destination,
+rather than typing out the entire new path.
+
+```sh
+bisc195 $ mv file2.txt lesson1/
+bisc195 $ ls lesson1
+```
+```
+file1.txt file2.txt
+```
+
+In this way, we can move multiple files at the same time,
+separated by spaces,
+as long as the final argument is a directory:
+
+```sh
+bisc195 $ mv file3.txt file4.txt file5.txt lesson1/
+bisc195 $ ls lesson1/
+```
+```
+file1.txt file2.txt file3.txt file4.txt file5.txt
+```
+
+Remember, `ls` without an argument shows us the contents
+of the current directory.
+
+```sh
+bisc195 $ ls
+```
+```
+all_files.txt file10.txt    file6.txt     file7.txt     file8.txt     file9.txt     lesson1
+```
+
+!!! info "Practice"
+    Can you figure out how to move the rest of the `file*.txt` files
+    to the `lesson1/` directory using a glob pattern?
+
+Once you've moved all the text files _other than_ `all_files.txt`
+into the `lesson1` folder,
+change the working directory to `lesson1` using `cd`
+
+!!! tip
+    If you accidentally moved `all_files.txt` into `lesson1/`,
+    you can move it back using the relative path `./`,
+    which means "current directory."
+    In other words, from the `bisc195` directory,
+    you can execute `mv lesson1/all_files.txt ./`.
+
+    Alternatively, if you've already done `cd lesson1`,
+    you can do `mv all_files.txt ../`.
+    Recall that `../` means "parent directory."
+
+The `c`o`p`y command works the same way as `mv`,
+except that the original stays where it is.
+
+Check to make sure you're in the `lesson1` directory:
+
+```sh
+lesson1 $ pwd
+```
+```
+/home/kevin/Documents/bisc195/lesson1
+```
+```sh
+lesson1 $ ls ./
+```
+```
+file1.txt  file2.txt  file4.txt  file6.txt  file8.txt
+file10.txt file3.txt  file5.txt  file7.txt  file9.txt
+```
+```sh
+lesson1 $ ls ../
+```
+```
+all_files.txt lesson1
+```
+
+Let's copy `all_files.txt` into the current directory using `cp`:
+
+```sh
+lesson1 $ cp ../all_files.txt ./
+lesson1 $ ls
+```
+```
+all_files.txt file10.txt    file3.txt     file5.txt     file7.txt     file9.txt
+file1.txt     file2.txt     file4.txt     file6.txt     file8.txt
+```
+```sh
+$ ls ../
+```
+```
+all_files.txt lesson1
+```
+
+As you can see,
+`all_files.txt` is now present in both the parent `bisc195/` directory
+_and_ the `lesson1/` directory.
 
 
+!!! tip "Practice"
+    Make a copy of `file1.txt` called `file1_second.txt`
+    in the `lesson1/` directory.
+    To check that you've succeeded,
+    execute `ls file1*.txt`, and the output should be
+    `file1.txt file10.txt file1_second.txt`
 
-- `mkdir`, `rmdir`
-- `cp`, `mv`, `rm`
-- globs
+### Rename and `r`e`m`ove files
+
+!!! warning
+    Once again, there is NO undo when using the terminal.
+    I once deleted 10 Gb of sequencing files from a lab server
+    in 2 seconds with a 13 character command.
+
+    Please use care with these commands.
+
+We actually don't need 2 copies of the `all_files.txt`.
+Let's `r`e`m`ove the one in the `bisc195` directory.
+
+```sh
+lesson1 $ rm ../all_files.txt
+lesson1 $ ls ../
+```
+```
+lesson1
+```
+
+Come to think of it - we don't need any of these files.
+Let's remove them all.
+
+!!! warning
+    I know, I'm repeating myself.
+    `rm` combined with glob patterns can do a lot of damage very quickly.
+    Beware!
+
+Before we do anything, verify we're still in the `lesson1` directory
+using `pwd` and `ls`.
+
+Then, remove all of the `.txt` files in the current directory:
+
+```sh
+lesson1 $ rm *.txt
+lesson1 $ ls
+lesson1 $
+```
+
+We don't need the `lesson1` directory either.
+First, move to the parent directory (`bisc195/`) using `cd`.
+`rm` doesn't work on directories:
+
+```sh
+bisc195 $ rm lesson1
+```
+```
+rm: lesson1: is a directory
+```
+
+Instead, use the `r`e`m`ove `dir`ectory command:
+
+```sh
+bisc195 $ rmdir lesson1
+bisc195 $ ls
+bisc195 $
+```
+
+## Summary
+
+- `cd` changes the current working directory
+- `pwd` prints (shows) the current working directory
+- `ls <path>` lists the contents of a directory
+    - `ls` without a path argument lists the contents of the current working directory
+    - `ls <glob>` lists the files/directories matching a pattern (eg ls *.txt)
+- use relative or absolute paths
+    - aboslute paths start with `/` (root) or `~/` (home)
+    - relative paths start with `./`, `../` or file and directory names
+- `mkdir` for creating directories
+- `mv <source(s)> <destination>` to move files and directories
+- `cp <source(s)> <destination>` to copy files and directories
+- glob patterns can be used to act on many files at once
+    - `*` = 0 or more characters (eg. *.txt)
+    - `?` = exactly 1 character (eg. file?.txt)
+    - `[]` = specific characters or range of characters
+        - eg `file[246].txt` = `file2.txt file3.txt file6.txt`
+        - eg `file[5-7].txt` = `file5.txt file6.txt file7.txt`
+- `rm` removes files
+- `rmdir` removes (empty) directories
 
 ## Key Terms
 
