@@ -84,6 +84,8 @@ $ pwd
 If you're using a Mac,
 this probably displayed something like `/Users/yourname`.
 
+You
+
 !!! tip
     Whenever you see code blocks in these lessons that start with `$ `,
     this is a hint that it is a shell command.
@@ -276,6 +278,11 @@ $ pwd
 ```
 /home/kevin
 ```
+It is possible to be more specific about where you want to go after moving
+up a directory. For example, I could write `../Documents` to go up a directory
+and then move into my Documents folder.
+
+You can also move up more than just one directory. For example, you can go up two directories with `../../`
 
 ### Practice
 
