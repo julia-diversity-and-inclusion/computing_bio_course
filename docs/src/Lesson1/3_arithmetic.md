@@ -4,7 +4,7 @@ Today we will be learning how to perform basic arithmetic calculations in Julia.
 
 Similar to what you learned in math class, `+`, `-`, and `*` are used for addition, subtraction, and multiplication. Try it out for yourself!
 
-```julia
+```@repl
 38 + 2
 
 44 - 4
