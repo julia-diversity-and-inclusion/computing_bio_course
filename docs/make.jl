@@ -9,12 +9,14 @@ makedocs(
             "Lesson1/index.md",
             "Windows Users" => "Lesson1/0_windows.md",
             "Using the Terminal" => "Lesson1/1_terminal.md",
-            "Git for Version Control" => "Lesson1/2_git.md"
+            "Using the Terminal" => "Lesson1/2_git.md",
+            "Arithmetic in Julia" => "Lesson1/3_arithmetic.md"
             ]
     ],
     authors = "Kevin Bonham, PhD",
     format = Documenter.HTML(
-        prettyurls = get(ENV, "CI", nothing) == "true")
+        prettyurls = get(ENV, "CI", nothing) == "true",
+        assets = ["assets/admonitions.css", ])
 )
 
 const repo="github.com/wellesley-bisc195/computing_bio_course.git"

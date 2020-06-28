@@ -428,7 +428,7 @@ Unpacking objects: 100% (18/18), done.
 
 You should now have a new directory called `lesson1-<your_username>/`.
 
-**Step 4:** Change your working directory, and do `git status`
+**Step 4:** Change your working directory back to lesson-1, and do `git status`
 
 ```sh
 lesson1 $ git status
